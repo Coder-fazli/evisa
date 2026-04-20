@@ -1,0 +1,7 @@
+uploads/
+upgrade/
+backup/
+cache/
+*.log
+*.zip
+*.tar.gz
