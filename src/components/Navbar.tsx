@@ -43,7 +43,7 @@ export function Navbar({ logoUrl }: NavbarProps = {}) {
         {/* Desktop */}
         <div className="hidden md:flex items-center h-24 max-w-[1200px] mx-auto px-6">
           {/* Logo — left */}
-          <a href="/" className="flex items-center cursor-pointer select-none">
+          <a href={locale === "en" ? "/" : `/${locale}`} className="flex items-center cursor-pointer select-none">
             <img src={logo} alt="eVisa Azerbaijan" className="h-10 w-auto" />
           </a>
 
@@ -92,9 +92,9 @@ export function Navbar({ logoUrl }: NavbarProps = {}) {
 
         {/* Mobile */}
         <div className="flex md:hidden items-center justify-between h-24 px-5">
-          <div className="flex items-center cursor-pointer select-none">
+          <a href={locale === "en" ? "/" : `/${locale}`} className="flex items-center cursor-pointer select-none">
             <img src={logo} alt="eVisa Azerbaijan" className="h-9 w-auto" />
-          </div>
+          </a>
           <button onClick={() => setOpen(!open)}
             className="w-10 h-10 flex items-center justify-center rounded-lg text-[#1a1a2e] hover:bg-gray-100 transition-colors">
             {open ? <X size={22} /> : <Menu size={22} />}
