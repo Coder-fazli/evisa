@@ -72,16 +72,16 @@ export function Hero({ title, primaryButton, secondaryButton, processingOptions 
 
         <div className={styles.ctaContainer}>
           <div className={styles.buttonsRow}>
-            <button className={styles.primaryButton}>
+            <a href="https://apply.azerbaijan-evisa.com/" target="_blank" rel="noopener noreferrer" className={styles.primaryButton}>
               <FileText size={18} />
               {primaryButton?.text ?? "Apply Now"}
               <ArrowRight size={17} strokeWidth={2.5} />
-            </button>
+            </a>
 
-            <button className={styles.secondaryButton}>
+            <a href="https://apply.azerbaijan-evisa.com/" target="_blank" rel="noopener noreferrer" className={styles.secondaryButton}>
               <Search size={18} />
               {secondaryButton?.text ?? "Track Application"}
-            </button>
+            </a>
           </div>
 
           <div className={styles.speedBar}>

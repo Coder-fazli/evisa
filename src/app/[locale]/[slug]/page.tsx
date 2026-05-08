@@ -6,13 +6,25 @@ import { client } from "@/sanity/client";
 import { PortableText } from "@portabletext/react";
 import styles from "./PostPage.module.css";
 
-async function getPost(slug: string) {
+async function getPost(slug: string, locale: string) {
+  const langFields: Record<string, { title: string; excerpt: string; category: string; body: string; metaTitle: string; metaDescription: string }> = {
+    en: { title: "english.title_en", excerpt: "english.excerpt_en", category: "english.category_en", body: "english.body_en", metaTitle: "english.metaTitle_en", metaDescription: "english.metaDescription_en" },
+    es: { title: "spanish.title_es", excerpt: "spanish.excerpt_es", category: "spanish.category_es", body: "spanish.body_es", metaTitle: "spanish.metaTitle_es", metaDescription: "spanish.metaDescription_es" },
+    ar: { title: "arabic.title_ar", excerpt: "arabic.excerpt_ar", category: "arabic.category_ar", body: "arabic.body_ar", metaTitle: "arabic.metaTitle_ar", metaDescription: "arabic.metaDescription_ar" },
+  };
+  const f = langFields[locale] || langFields.en;
+
   try {
     const data = await client.fetch(
       `*[_type == "post" && slug.current == $slug][0] {
-        title, publishedAt, excerpt, category,
+        "title": ${f.title},
+        "excerpt": ${f.excerpt},
+        "category": ${f.category},
+        "body": ${f.body},
+        "metaTitle": ${f.metaTitle},
+        "metaDescription": ${f.metaDescription},
         "coverImage": coverImage.asset->url,
-        body, metaTitle, metaDescription
+        publishedAt
       }`,
       { slug },
       { next: { revalidate: 0 } }
@@ -23,12 +35,18 @@ async function getPost(slug: string) {
   }
 }
 
-async function getRelatedPosts(excludeSlug: string) {
+async function getRelatedPosts(excludeSlug: string, locale: string) {
+  const titleField = locale === "es" ? "spanish.title_es" : locale === "ar" ? "arabic.title_ar" : "english.title_en";
+  const categoryField = locale === "es" ? "spanish.category_es" : locale === "ar" ? "arabic.category_ar" : "english.category_en";
+
   try {
     return await client.fetch(
       `*[_type == "post" && slug.current != $slug] | order(publishedAt desc) [0...5] {
-        title, "slug": slug.current, publishedAt, category,
-        "coverImage": coverImage.asset->url
+        "title": ${titleField},
+        "slug": slug.current,
+        "category": ${categoryField},
+        "coverImage": coverImage.asset->url,
+        publishedAt
       }`,
       { slug: excludeSlug },
       { next: { revalidate: 0 } }
@@ -38,10 +56,12 @@ async function getRelatedPosts(excludeSlug: string) {
   }
 }
 
-async function getCountries() {
+async function getCountries(locale: string) {
+  const nameField = locale === "es" ? "spanish.name_es" : locale === "ar" ? "arabic.name_ar" : "english.name_en";
+
   try {
     return await client.fetch(
-      `*[_type == "country"] | order(name asc) [0...12] { name, "slug": slug.current, countryCode }`,
+      `*[_type == "country"] | order(${nameField} asc) [0...12] { "name": ${nameField}, "slug": slug.current, countryCode }`,
       {},
       { next: { revalidate: 0 } }
     );
@@ -52,7 +72,7 @@ async function getCountries() {
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string; locale: string }> }) {
   const { slug, locale } = await params;
-  const post = await getPost(slug);
+  const post = await getPost(slug, locale);
   const baseUrl = "https://evisa-azerbaijan.com";
   const currentUrl = `${baseUrl}/${locale}/${slug}`;
 
@@ -73,9 +93,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 export default async function PostPage({ params }: { params: Promise<{ slug: string; locale: string }> }) {
   const { slug, locale } = await params;
   const [post, relatedPosts, countries] = await Promise.all([
-    getPost(slug),
-    getRelatedPosts(slug),
-    getCountries(),
+    getPost(slug, locale),
+    getRelatedPosts(slug, locale),
+    getCountries(locale),
   ]);
   if (!post) notFound();
 

@@ -44,7 +44,7 @@ export function ApplyButton({
   const base = `relative h-12 rounded-full overflow-hidden cursor-pointer text-[15px] font-semibold pl-6 pr-14 hover:pl-14 hover:pr-6 transition-all duration-500 group w-fit inline-flex items-center ${s.btn} ${className}`;
 
   if (href) {
-    return <a href={href} className={base}>{inner}</a>;
+    return <a href={href} target="_blank" rel="noopener noreferrer" className={base}>{inner}</a>;
   }
 
   return <button className={base}>{inner}</button>;

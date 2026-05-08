@@ -86,7 +86,7 @@ export function Navbar({ logoUrl }: NavbarProps = {}) {
                 </div>
               )}
             </div>
-            <ApplyButton variant="orange" />
+            <ApplyButton variant="orange" href="https://apply.azerbaijan-evisa.com/" />
           </div>
         </div>
 
@@ -135,7 +135,7 @@ export function Navbar({ logoUrl }: NavbarProps = {}) {
           </div>
 
           <div className="h-px bg-gray-100 mx-6 my-2" />
-          <a href="#" onClick={() => setOpen(false)}
+          <a href="https://apply.azerbaijan-evisa.com/" target="_blank" rel="noopener noreferrer" onClick={() => setOpen(false)}
             className="mx-6 mt-1 bg-[#E8671A] text-white text-center py-3 rounded-full font-bold text-[15px] hover:bg-[#C9540D] transition-colors">
             {t("common.applyNow")}
           </a>

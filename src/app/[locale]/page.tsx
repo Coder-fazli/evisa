@@ -60,31 +60,31 @@
     try {
       let query;
       if (locale === "es") {
-        query = `*[_type == "post"] | order(publishedAt desc)[0..4]{
+        query = `*[_type == "post" && !(_id in path("drafts.**"))] | order(publishedAt desc)[0..4]{
           "title": spanish.title_es,
           "category": spanish.category_es,
           "description": spanish.excerpt_es,
           "image": coverImage.asset->url,
           "publishDate": publishedAt,
-          "readMoreLink": "/blog/" + slug.current
+          "readMoreLink": "/" + slug.current
         }`;
       } else if (locale === "ar") {
-        query = `*[_type == "post"] | order(publishedAt desc)[0..4]{
+        query = `*[_type == "post" && !(_id in path("drafts.**"))] | order(publishedAt desc)[0..4]{
           "title": arabic.title_ar,
           "category": arabic.category_ar,
           "description": arabic.excerpt_ar,
           "image": coverImage.asset->url,
           "publishDate": publishedAt,
-          "readMoreLink": "/blog/" + slug.current
+          "readMoreLink": "/" + slug.current
         }`;
       } else {
-        query = `*[_type == "post"] | order(publishedAt desc)[0..4]{
+        query = `*[_type == "post" && !(_id in path("drafts.**"))] | order(publishedAt desc)[0..4]{
           "title": english.title_en,
           "category": english.category_en,
           "description": english.excerpt_en,
           "image": coverImage.asset->url,
           "publishDate": publishedAt,
-          "readMoreLink": "/blog/" + slug.current
+          "readMoreLink": "/" + slug.current
         }`;
       }
 
