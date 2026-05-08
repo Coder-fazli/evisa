@@ -1,0 +1,129 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 640px) {
+  .row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.input,
+.textarea {
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 14px 16px;
+  font-size: 15px;
+  color: #1f2937;
+  font-family: inherit;
+  transition: border-color 0.2s, background 0.2s;
+  width: 100%;
+}
+
+.input:focus,
+.textarea:focus {
+  outline: none;
+  background: white;
+  border-color: #E8671A;
+}
+
+.input::placeholder,
+.textarea::placeholder {
+  color: #9ca3af;
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+.captchaRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 14px 16px;
+  max-width: 240px;
+}
+
+.captchaLabel {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.captchaInput {
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  color: #1f2937;
+  font-family: inherit;
+  width: 80px;
+}
+
+.error {
+  color: #dc2626;
+  font-size: 14px;
+  margin: 0;
+}
+
+.submitButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #E8671A;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 14px 32px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  align-self: flex-start;
+  font-family: inherit;
+}
+
+.submitButton:hover:not(:disabled) {
+  background: #C9540D;
+  transform: translateY(-1px);
+}
+
+.submitButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.successBox {
+  background: #ecfdf5;
+  border: 1px solid #10b981;
+  border-radius: 12px;
+  padding: 32px;
+  text-align: center;
+}
+
+.successBox h3 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #065f46;
+  margin: 0 0 8px;
+}
+
+.successBox p {
+  color: #047857;
+  margin: 0;
+}

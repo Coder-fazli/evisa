@@ -1,0 +1,94 @@
+import { FileText, CreditCard, MailCheck } from "lucide-react";
+
+const DEFAULT_STEPS = [
+  {
+    number: "01",
+    icon: FileText,
+    color: "#E8671A",
+    title: "Apply Online",
+    desc: "Fill out our secure application form in just a few minutes from any device.",
+  },
+  {
+    number: "02",
+    icon: CreditCard,
+    color: "#3b82f6",
+    title: "Secure Payment",
+    desc: "Pay the processing fee securely using your credit card or other payment methods.",
+  },
+  {
+    number: "03",
+    icon: MailCheck,
+    color: "#10b981",
+    title: "Get your e-Visa",
+    desc: "Receive your official Azerbaijan e-Visa directly to your email once approved.",
+  },
+];
+
+interface Step {
+  title: string;
+  description: string;
+  color: string;
+}
+
+export function StepsSection({ steps }: { steps?: Step[] }) {
+  const displaySteps = (steps || DEFAULT_STEPS).map((step, idx) => ({
+    number: String(idx + 1).padStart(2, "0"),
+    icon: idx === 0 ? FileText : idx === 1 ? CreditCard : MailCheck,
+    color: step.color || DEFAULT_STEPS[idx].color,
+    title: step.title,
+    desc: "description" in step ? step.description : step.desc,
+  }));
+  return (
+    <section className="relative z-30 bg-white -mt-16 rounded-t-[80px] px-5 md:px-12 lg:px-20 pt-4 pb-16">
+      <div className="max-w-5xl mx-auto -mt-[80px]">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+          {displaySteps.map((step, i) => {
+            const Icon = step.icon;
+            return (
+              <div key={step.number} className="relative group h-full">
+
+                {/* Connector between cards — desktop only */}
+                {i < displaySteps.length - 1 && (
+                  <div className="hidden md:flex absolute top-10 -right-3 z-10 items-center">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                      <path d="M5 12h14M13 6l6 6-6 6" stroke="rgba(255,255,255,0.2)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </div>
+                )}
+
+                <div className="bg-[#faf5ee] rounded-2xl px-6 py-5 flex flex-col gap-3 h-full
+                  shadow-[0_4px_24px_rgba(0,0,0,0.1)]
+                  hover:shadow-[0_12px_40px_rgba(232,103,26,0.18)]
+                  hover:-translate-y-1
+                  transition-all duration-300">
+
+                  {/* Top row: icon + step label + title */}
+                  <div className="flex items-center gap-4">
+                    <div className="w-11 h-11 rounded-xl flex-shrink-0 flex items-center justify-center"
+                      style={{ background: `${step.color}18` }}>
+                      <Icon size={20} style={{ color: step.color }} strokeWidth={2} />
+                    </div>
+                    <div>
+                      <span className="text-[10px] font-extrabold tracking-[2px] uppercase block"
+                        style={{ color: step.color }}>
+                        Step {step.number}
+                      </span>
+                      <h3 className="text-[22px] font-extrabold text-[#1a1a2e] leading-snug">
+                        {step.title}
+                      </h3>
+                    </div>
+                  </div>
+
+                  {/* Description below */}
+                  <p className="text-[15px] text-gray-500 leading-relaxed">
+                    {step.desc}
+                  </p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}

@@ -1,0 +1,51 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "visa": "Información de Visa",
+    "blog": "Noticias",
+    "about": "Acerca de",
+    "contact": "Contacto"
+  },
+  "header": {
+    "title": "e-Visa de Azerbaiyán",
+    "subtitle": "Portal Oficial de Solicitudes"
+  },
+  "footer": {
+    "description": "La forma oficial y más rápida de obtener tu e-Visa de Azerbaiyán en línea. Confiado por viajeros de más de 100 países.",
+    "visaServices": "Servicios de Visa",
+    "applyEvisa": "Solicitar e-Visa",
+    "visaRequirements": "Requisitos de Visa",
+    "visaTypes": "Tipos de Visa",
+    "urgentProcessing": "Procesamiento Urgente",
+    "visaByNationality": "Visa por Nacionalidad",
+    "company": "Empresa",
+    "aboutUs": "Acerca de Nosotros",
+    "blog": "Noticias",
+    "contactUs": "Contáctenos",
+    "support": "Soporte",
+    "faq": "Preguntas Frecuentes",
+    "trackApplication": "Rastrear Solicitud",
+    "privacyPolicy": "Política de Privacidad",
+    "termsConditions": "Términos y Condiciones",
+    "copyright": "© 2026 e-Visa de Azerbaiyán. Todos los derechos reservados.",
+    "sslSecure": "SSL SEGURO",
+    "sslDescription": "Cifrado de 256 bits",
+    "pciDss": "PCI DSS",
+    "pciDescription": "Compatible",
+    "support24": "SOPORTE 24/7",
+    "supportDescription": "Servicio al Cliente",
+    "refundPolicy": "POLÍTICA DE REEMBOLSO",
+    "refundDescription": "Garantía de Devolución de Dinero"
+  },
+  "common": {
+    "applyNow": "Solicitar Ahora",
+    "trackApplication": "Rastrear Solicitud",
+    "learnMore": "Aprende Más",
+    "readMore": "Leer Más"
+  },
+  "worldMap": {
+    "label": "Acceso Global",
+    "title": "Solicita desde Cualquier Lugar del Mundo",
+    "description": "Ciudadanos de más de 100 países pueden solicitar su e-Visa de Azerbaiyán en línea en minutos."
+  }
+}

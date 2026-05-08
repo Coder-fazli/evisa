@@ -1,0 +1,144 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.card {
+  background: white;
+  border: 1px solid #f0f0f0;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
+}
+
+.cardHeader {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1a1a2e;
+  padding: 20px 20px 0;
+  border-bottom: 2px solid #E8671A;
+  padding-bottom: 14px;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Related posts */
+.postList {
+  list-style: none;
+  margin: 0;
+  padding: 8px 0 8px;
+}
+
+.postItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 20px;
+  text-decoration: none;
+  border-bottom: 1px solid #f5f5f5;
+  transition: background 0.15s;
+}
+
+.postItem:last-child {
+  border-bottom: none;
+}
+
+.postItem:hover {
+  background: #fff8f4;
+}
+
+.postThumb {
+  width: 60px;
+  height: 48px;
+  border-radius: 8px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.postThumbPlaceholder {
+  width: 60px;
+  height: 48px;
+  border-radius: 8px;
+  background: #f3f4f6;
+  flex-shrink: 0;
+}
+
+.postInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.postTitle {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1a1a2e;
+  line-height: 1.4;
+  margin-bottom: 4px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  transition: color 0.15s;
+}
+
+.postItem:hover .postTitle {
+  color: #E8671A;
+}
+
+.postMeta {
+  font-size: 11px;
+  color: #9ca3af;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.postCategory {
+  color: #E8671A;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* Countries */
+.natList {
+  list-style: none;
+  margin: 0;
+  padding: 8px 0 8px;
+  max-height: 360px;
+  overflow-y: auto;
+}
+
+.natItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 20px;
+  border-bottom: 1px solid #f5f5f5;
+  text-decoration: none;
+  color: #374151;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.15s, color 0.15s;
+}
+
+.natItem:last-child {
+  border-bottom: none;
+}
+
+.natItem:hover {
+  background: #fff8f4;
+  color: #E8671A;
+}
+
+.natFlag {
+  width: 26px;
+  height: 18px;
+  border-radius: 3px;
+  object-fit: cover;
+  flex-shrink: 0;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}

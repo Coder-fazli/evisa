@@ -1,0 +1,51 @@
+{
+  "nav": {
+    "home": "Home",
+    "visa": "Visa Info",
+    "blog": "News",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "header": {
+    "title": "Azerbaijan e-Visa",
+    "subtitle": "Official Application Portal"
+  },
+  "footer": {
+    "description": "The official and fastest way to obtain your Azerbaijan e-Visa online. Trusted by travelers from 100+ countries.",
+    "visaServices": "Visa Services",
+    "applyEvisa": "Apply for e-Visa",
+    "visaRequirements": "Visa Requirements",
+    "visaTypes": "Visa Types",
+    "urgentProcessing": "Urgent Processing",
+    "visaByNationality": "Visa by Nationality",
+    "company": "Company",
+    "aboutUs": "About Us",
+    "blog": "News",
+    "contactUs": "Contact Us",
+    "support": "Support",
+    "faq": "FAQ",
+    "trackApplication": "Track Application",
+    "privacyPolicy": "Privacy Policy",
+    "termsConditions": "Terms & Conditions",
+    "copyright": "© 2026 eVisa Azerbaijan. All rights reserved.",
+    "sslSecure": "SSL SECURE",
+    "sslDescription": "256-bit Encryption",
+    "pciDss": "PCI DSS",
+    "pciDescription": "Compliant",
+    "support24": "24/7 SUPPORT",
+    "supportDescription": "Customer Service",
+    "refundPolicy": "REFUND POLICY",
+    "refundDescription": "Money-Back Guarantee"
+  },
+  "common": {
+    "applyNow": "Apply Now",
+    "trackApplication": "Track Application",
+    "learnMore": "Learn More",
+    "readMore": "Read More"
+  },
+  "worldMap": {
+    "label": "Worldwide Access",
+    "title": "Apply from Anywhere in the World",
+    "description": "Citizens of 100+ countries can apply for their Azerbaijan e-Visa online in minutes."
+  }
+}
