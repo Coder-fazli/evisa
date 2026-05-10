@@ -4,7 +4,7 @@ Disallow: /studio
 Disallow: /_next
 Disallow: /api
 
-Sitemap: https://evisa.az/sitemap.xml
+Sitemap: https://azerbaijan-evisa.com/sitemap.xml
 
 # Crawl delay (optional)
 Crawl-delay: 1
