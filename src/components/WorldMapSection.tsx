@@ -6,7 +6,8 @@ import { WorldMap } from "@/components/ui/map";
 import { MapModal } from "@/components/ui/MapModal";
 import { Maximize2 } from "lucide-react";
 
-const BAKU = { lat: 40.409, lng: 49.867, label: "Baku" };
+// Baku center point - adjusted for better map visualization
+const BAKU = { lat: 40.41, lng: 49.87, label: "Baku" };
 
 // Spread across all continents — no two cities close enough to overlap
 const dots = [
