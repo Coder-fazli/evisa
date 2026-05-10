@@ -223,7 +223,7 @@ export function WorldMap({
                   >
                     <foreignObject
                       x={startPoint.x - 50}
-                      y={startPoint.y - 35}
+                      y={startPoint.y - 50}
                       width="100"
                       height="30"
                       className="block"
@@ -292,7 +292,7 @@ export function WorldMap({
                   >
                     <foreignObject
                       x={endPoint.x - 50}
-                      y={endPoint.y - 35}
+                      y={endPoint.y - 50}
                       width="100"
                       height="30"
                       className="block"
