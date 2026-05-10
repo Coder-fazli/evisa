@@ -103,18 +103,18 @@
 
     const metadataByLocale: Record<string, { title: string; description: string }> = {
       es: {
-        title: "Solicitud de eVisa de Azerbaiyán - Portal Oficial",
-        description: "Solicita tu eVisa de Azerbaiyán en línea. Rápido, seguro y 100% oficial. Procesamiento en 3 días hábiles.",
+        title: "e Visa Azerbaiyán - Solicita tu Visado Electrónico en Línea",
+        description: "Solicita tu e visa Azerbaiyán en línea. Visa electrónica rápida y segura. Procesar tu visa online en 3 horas.",
       },
       ar: {
-        title: "تأشيرة أذربيجان الإلكترونية - البوابة الرسمية",
-        description: "قدم طلبك للحصول على تأشيرة أذربيجان الإلكترونية عبر الإنترنت. سريع وآمن و100٪ رسمي.",
+        title: "تأشيرة أذربيجان الإلكترونية - تقديم بتة Visa عبر الإنترنت",
+        description: "قدم طلب e visa أذربيجان عبر الإنترنت. الفيزا الإلكترونية الرسمية ASAN. معالجة سريعة في 3 ساعات.",
       },
     };
 
     const meta = metadataByLocale[locale] || {
-      title: "Azerbaijan e-Visa – Official Application Portal",
-      description: "Apply for your Azerbaijan e-Visa online. Fast, secure, and 100% official. Processing in 3 business days.",
+      title: "e Visa Azerbaijan - Apply for Official Electronic Visa Online",
+      description: "Get your e visa Azerbaijan online in minutes. Fast electronic visa application. ASAN official e-visa portal. Processing as fast as 3 hours.",
     };
 
     return {
