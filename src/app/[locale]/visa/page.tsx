@@ -7,7 +7,6 @@ import { NationalitySection } from "@/components/NationalitySection";
 import { FAQSection } from "@/components/ui/faqs-component";
 import { client } from "@/sanity/client";
 import { PortableText } from "@portabletext/react";
-import styles from "../InfoPage.module.css";
 
 async function getPage(locale: string) {
   const langMap: Record<string, { title: string; body: string; metaTitle: string; metaDescription: string }> = {
@@ -133,11 +132,43 @@ export default async function VisaIndexPage({ params }: { params: Promise<{ loca
 
       {page.body && (
         <div style={{ maxWidth: "900px", margin: "0 auto", padding: "40px 24px" }}>
-          <article className={styles.body}>
+          <article style={{ fontSize: "17px", color: "#4b5563", lineHeight: "1.85" }}>
             <PortableText
               value={page.body}
               components={{
+                block: {
+                  h2: ({ children }) => (
+                    <h2 style={{ fontSize: "24px", fontWeight: "700", color: "#1a1a2e", margin: "40px 0 14px", paddingLeft: "14px", borderLeft: "3px solid #E8671A", lineHeight: "1.3" }}>
+                      {children}
+                    </h2>
+                  ),
+                  h3: ({ children }) => (
+                    <h3 style={{ fontSize: "20px", fontWeight: "700", color: "#1a1a2e", margin: "28px 0 10px" }}>
+                      {children}
+                    </h3>
+                  ),
+                  h4: ({ children }) => (
+                    <h4 style={{ fontSize: "18px", fontWeight: "700", color: "#1a1a2e", margin: "24px 0 8px" }}>
+                      {children}
+                    </h4>
+                  ),
+                  normal: ({ children }) => (
+                    <p style={{ fontSize: "17px", color: "#4b5563", lineHeight: "1.85", marginBottom: "18px" }}>
+                      {children}
+                    </p>
+                  ),
+                  blockquote: ({ children }) => (
+                    <blockquote style={{ borderLeft: "4px solid #E8671A", margin: "28px 0", padding: "16px 24px", background: "#fff8f4", borderRadius: "0 12px 12px 0", fontSize: "17px", color: "#4b5563", fontStyle: "italic", lineHeight: "1.8" }}>
+                      {children}
+                    </blockquote>
+                  ),
+                },
                 marks: {
+                  strong: ({ children }) => (
+                    <strong style={{ color: "#1a1a2e", fontWeight: "600" }}>
+                      {children}
+                    </strong>
+                  ),
                   link: ({ children, value }) => (
                     <a
                       href={value?.href}
@@ -152,14 +183,6 @@ export default async function VisaIndexPage({ params }: { params: Promise<{ loca
                     <code style={{ background: "#f3f4f6", padding: "2px 6px", borderRadius: "4px", fontSize: "14px", fontFamily: "monospace" }}>
                       {children}
                     </code>
-                  ),
-                },
-                block: {
-                  blockquote: ({ children }) => (
-                    <blockquote className={styles.blockquote}>{children}</blockquote>
-                  ),
-                  h4: ({ children }) => (
-                    <h4 className={styles.h4}>{children}</h4>
                   ),
                 },
               }}
