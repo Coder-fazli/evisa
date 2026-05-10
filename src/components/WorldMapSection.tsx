@@ -1,7 +1,10 @@
 "use client";
 
 import { useTranslations } from "next-intl";
+import { useState } from "react";
 import { WorldMap } from "@/components/ui/map";
+import { MapModal } from "@/components/ui/MapModal";
+import { Maximize2 } from "lucide-react";
 
 const BAKU = { lat: 40.4093, lng: 49.8671, label: "Baku" };
 
@@ -19,32 +22,67 @@ const dots = [
 
 export function WorldMapSection() {
   const t = useTranslations();
+  const [mapModalOpen, setMapModalOpen] = useState(false);
 
   return (
-    <section className="bg-white pt-6 pb-12">
-      {/* Header */}
-      <div className="max-w-2xl mx-auto text-center px-5 mb-2">
-        <p className="text-[10px] font-medium tracking-[2.5px] text-[#E8671A] uppercase mb-2">
-          {t("worldMap.label")}
-        </p>
-        <h2 className="text-[28px] md:text-[36px] font-extrabold text-[#1a1a2e] leading-snug mb-2">
-          {t("worldMap.title")}
-        </h2>
-        <p className="text-gray-400 text-[13px] leading-relaxed font-normal">
-          {t("worldMap.description")}
-        </p>
-      </div>
+    <>
+      <section className="bg-white sticky top-24 md:static z-20 pt-6 pb-2 md:pb-12 border-b md:border-0">
+        {/* Header */}
+        <div className="max-w-2xl mx-auto text-center px-5 mb-4 md:mb-2">
+          <p className="text-[10px] font-medium tracking-[2.5px] text-[#E8671A] uppercase mb-2">
+            {t("worldMap.label")}
+          </p>
+          <h2 className="text-[28px] md:text-[36px] font-extrabold text-[#1a1a2e] leading-snug mb-2">
+            {t("worldMap.title")}
+          </h2>
+          <p className="text-gray-400 text-[13px] leading-relaxed font-normal">
+            {t("worldMap.description")}
+          </p>
+        </div>
 
-      {/* Map – constrained width */}
-      <div className="max-w-6xl mx-auto px-5">
-        <WorldMap
-          dots={dots}
-          lineColor="#E8671A"
-          showLabels={true}
-          animationDuration={2}
-          loop={true}
-        />
-      </div>
-    </section>
+        {/* Map – constrained width with expand button */}
+        <div className="max-w-6xl mx-auto px-5">
+          <div className="relative">
+            {/* Expand button */}
+            <button
+              onClick={() => setMapModalOpen(true)}
+              className="absolute top-3 right-3 z-10 md:hidden bg-[#E8671A] hover:bg-[#C9540D] text-white p-2 rounded-lg transition-colors shadow-md"
+              aria-label="Expand map"
+              title="View full screen map"
+            >
+              <Maximize2 size={18} />
+            </button>
+
+            <WorldMap
+              dots={dots}
+              lineColor="#E8671A"
+              showLabels={true}
+              animationDuration={2}
+              loop={true}
+              isMobile={true}
+            />
+          </div>
+
+          {/* Swipeable location cards on mobile */}
+          <div className="md:hidden mt-6">
+            <div className="flex overflow-x-auto gap-3 pb-2 -mx-5 px-5">
+              {dots.map((dot, idx) => (
+                <div
+                  key={idx}
+                  className="flex-shrink-0 w-40 bg-gradient-to-br from-orange-50 to-white p-4 rounded-lg border border-orange-100 shadow-sm"
+                >
+                  <p className="font-bold text-sm text-[#1a1a2e]">{dot.start.label}</p>
+                  <p className="text-xs text-gray-500 mt-1">↓</p>
+                  <p className="font-semibold text-sm text-[#E8671A]">Baku</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Full-screen map modal */}
+      <MapModal isOpen={mapModalOpen} onClose={() => setMapModalOpen(false)} dots={dots} />
+    </>
   );
 }

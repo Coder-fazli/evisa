@@ -15,15 +15,19 @@ interface MapProps {
   labelClassName?: string;
   animationDuration?: number;
   loop?: boolean;
+  isMobile?: boolean;
+  isExpanded?: boolean;
 }
 
-export function WorldMap({ 
-  dots = [], 
+export function WorldMap({
+  dots = [],
   lineColor = "#0ea5e9",
   showLabels = true,
   labelClassName = "text-sm",
   animationDuration = 2,
-  loop = true
+  loop = true,
+  isMobile = false,
+  isExpanded = false
 }: MapProps) {
   const svgRef = useRef<SVGSVGElement>(null);
   const [hoveredLocation, setHoveredLocation] = useState<string | null>(null);
@@ -35,12 +39,12 @@ export function WorldMap({
 
   const svgMap = useMemo(
     () => map.getSVG({
-      radius: 0.22,
+      radius: isMobile ? 0.35 : 0.22,
       color: "#00000040",
       shape: "circle",
       backgroundColor: "white",
     }),
-    [map]
+    [map, isMobile]
   );
 
   const projectPoint = (lat: number, lng: number) => {
@@ -65,7 +69,9 @@ export function WorldMap({
   const fullCycleDuration = totalAnimationTime + pauseTime;
 
   return (
-    <div className="w-full aspect-[2/1] dark:bg-black bg-white rounded-lg relative font-sans overflow-hidden">
+    <div className={`w-full dark:bg-black bg-white rounded-lg relative font-sans overflow-hidden ${
+      isExpanded ? "h-full" : isMobile ? "aspect-[1/1]" : "aspect-[2/1]"
+    }`}>
       <Image
         src={`data:image/svg+xml;utf8,${encodeURIComponent(svgMap)}`}
         className="h-full w-full [mask-image:linear-gradient(to_bottom,transparent,white_10%,white_90%,transparent)] pointer-events-none select-none object-cover"
@@ -223,7 +229,9 @@ export function WorldMap({
                       className="block"
                     >
                       <div className="flex items-center justify-center h-full">
-                        <span className="text-[11px] font-semibold text-gray-500 dark:text-gray-400 tracking-wide">
+                        <span className={`font-semibold text-gray-500 dark:text-gray-400 tracking-wide ${
+                          isMobile ? "text-[12px]" : "text-[11px]"
+                        }`}>
                           {dot.start.label}
                         </span>
                       </div>
@@ -290,7 +298,9 @@ export function WorldMap({
                       className="block"
                     >
                       <div className="flex items-center justify-center h-full">
-                        <span className="text-[11px] font-semibold text-gray-500 dark:text-gray-400 tracking-wide">
+                        <span className={`font-semibold text-gray-500 dark:text-gray-400 tracking-wide ${
+                          isMobile ? "text-[12px]" : "text-[11px]"
+                        }`}>
                           {dot.end.label}
                         </span>
                       </div>

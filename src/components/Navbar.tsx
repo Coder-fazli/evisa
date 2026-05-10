@@ -95,10 +95,37 @@ export function Navbar({ logoUrl }: NavbarProps = {}) {
           <a href={locale === "en" ? "/" : `/${locale}`} className="flex items-center cursor-pointer select-none">
             <img src={logo} alt="eVisa Azerbaijan" className="h-9 w-auto" />
           </a>
-          <button onClick={() => setOpen(!open)}
-            className="w-10 h-10 flex items-center justify-center rounded-lg text-[#1a1a2e] hover:bg-gray-100 transition-colors">
-            {open ? <X size={22} /> : <Menu size={22} />}
-          </button>
+          <div className="flex items-center gap-2">
+            {/* Language Switcher Mobile */}
+            <div className="relative">
+              <button
+                onClick={() => setLangOpen(!langOpen)}
+                className="flex items-center justify-center gap-1 text-xs text-gray-500 bg-gray-50 hover:bg-gray-100 px-2 py-1.5 rounded-md transition-colors">
+                <Globe size={13} />
+                {languages.find(l => l.code === locale)?.code.toUpperCase()}
+                <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+
+              {langOpen && (
+                <div className="absolute top-full right-0 mt-1 bg-white border border-gray-200 rounded-lg shadow-lg min-w-[100px] z-50">
+                  {languages.filter(lang => lang.code !== locale).map((lang) => (
+                    <button
+                      key={lang.code}
+                      onClick={() => handleLanguageChange(lang.code)}
+                      className="w-full text-left px-3 py-2 text-xs text-gray-700 hover:bg-gray-50 transition-colors">
+                      {lang.code.toUpperCase()}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Burger Menu */}
+            <button onClick={() => setOpen(!open)}
+              className="w-10 h-10 flex items-center justify-center rounded-lg text-[#1a1a2e] hover:bg-gray-100 transition-colors">
+              {open ? <X size={22} /> : <Menu size={22} />}
+            </button>
+          </div>
         </div>
       </nav>
 
@@ -113,27 +140,6 @@ export function Navbar({ logoUrl }: NavbarProps = {}) {
               {l.label}
             </a>
           ))}
-          <div className="h-px bg-gray-100 mx-6 my-2" />
-
-          {/* Language selector mobile */}
-          <div className="px-6 py-3">
-            <p className="text-xs text-gray-500 mb-2 uppercase font-semibold">{t("nav.home")}</p>
-            <div className="flex gap-2">
-              {languages.map((lang) => (
-                <button
-                  key={lang.code}
-                  onClick={() => handleLanguageChange(lang.code)}
-                  className={`flex-1 py-2 rounded-md text-sm font-semibold transition-colors ${
-                    locale === lang.code
-                      ? "bg-[#E8671A] text-white"
-                      : "bg-gray-100 text-gray-700"
-                  }`}>
-                  {lang.name}
-                </button>
-              ))}
-            </div>
-          </div>
-
           <div className="h-px bg-gray-100 mx-6 my-2" />
           <a href="https://apply.azerbaijan-evisa.com/" target="_blank" rel="noopener noreferrer" onClick={() => setOpen(false)}
             className="mx-6 mt-1 bg-[#E8671A] text-white text-center py-3 rounded-full font-bold text-[15px] hover:bg-[#C9540D] transition-colors">
