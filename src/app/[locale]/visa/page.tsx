@@ -131,72 +131,74 @@ export default async function VisaIndexPage({ params }: { params: Promise<{ loca
       <InfoPageStats />
 
       {page.body && (
-        <div style={{ maxWidth: "900px", margin: "0 auto", padding: "40px 24px" }}>
-          <article style={{ fontSize: "17px", color: "#4b5563", lineHeight: "1.85" }}>
-            <PortableText
-              value={page.body}
-              components={{
-                block: {
-                  h2: ({ children }) => (
-                    <h2 style={{ fontSize: "24px", fontWeight: "700", color: "#1a1a2e", margin: "40px 0 14px", paddingLeft: "14px", borderLeft: "3px solid #E8671A", lineHeight: "1.3" }}>
-                      {children}
-                    </h2>
-                  ),
-                  h3: ({ children }) => (
-                    <h3 style={{ fontSize: "20px", fontWeight: "700", color: "#1a1a2e", margin: "28px 0 10px" }}>
-                      {children}
-                    </h3>
-                  ),
-                  h4: ({ children }) => (
-                    <h4 style={{ fontSize: "18px", fontWeight: "700", color: "#1a1a2e", margin: "24px 0 8px" }}>
-                      {children}
-                    </h4>
-                  ),
-                  normal: ({ children }) => (
-                    <p style={{ fontSize: "17px", color: "#4b5563", lineHeight: "1.85", marginBottom: "18px" }}>
-                      {children}
-                    </p>
-                  ),
-                  blockquote: ({ children }) => (
-                    <blockquote style={{ borderLeft: "4px solid #E8671A", margin: "28px 0", padding: "16px 24px", background: "#fff8f4", borderRadius: "0 12px 12px 0", fontSize: "17px", color: "#4b5563", fontStyle: "italic", lineHeight: "1.8" }}>
-                      {children}
-                    </blockquote>
-                  ),
-                },
-                marks: {
-                  strong: ({ children }) => (
-                    <strong style={{ color: "#1a1a2e", fontWeight: "600" }}>
-                      {children}
-                    </strong>
-                  ),
-                  link: ({ children, value }) => (
-                    <a
-                      href={value?.href}
-                      target={value?.blank ? "_blank" : undefined}
-                      rel={value?.blank ? "noopener noreferrer" : undefined}
-                      style={{ color: "#E8671A", textDecoration: "underline" }}
-                    >
-                      {children}
-                    </a>
-                  ),
-                  code: ({ children }) => (
-                    <code style={{ background: "#f3f4f6", padding: "2px 6px", borderRadius: "4px", fontSize: "14px", fontFamily: "monospace" }}>
-                      {children}
-                    </code>
-                  ),
-                },
-              }}
-            />
-          </article>
-        </div>
+        <section className="py-10 md:py-16 px-5">
+          <div className="max-w-2xl mx-auto">
+            <article className="prose prose-sm md:prose-base max-w-none">
+              <PortableText
+                value={page.body}
+                components={{
+                  block: {
+                    h2: ({ children }) => (
+                      <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mt-10 mb-3 pl-4 border-l-4 border-orange-600">
+                        {children}
+                      </h2>
+                    ),
+                    h3: ({ children }) => (
+                      <h3 className="text-xl font-bold text-gray-900 mt-7 mb-2">
+                        {children}
+                      </h3>
+                    ),
+                    h4: ({ children }) => (
+                      <h4 className="text-lg font-bold text-gray-900 mt-6 mb-2">
+                        {children}
+                      </h4>
+                    ),
+                    normal: ({ children }) => (
+                      <p className="text-gray-700 leading-relaxed mb-4">
+                        {children}
+                      </p>
+                    ),
+                    blockquote: ({ children }) => (
+                      <blockquote className="border-l-4 border-orange-600 pl-6 py-4 my-7 italic text-gray-700 bg-orange-50 rounded-r">
+                        {children}
+                      </blockquote>
+                    ),
+                  },
+                  marks: {
+                    strong: ({ children }) => (
+                      <strong className="font-semibold text-gray-900">
+                        {children}
+                      </strong>
+                    ),
+                    link: ({ children, value }) => (
+                      <a
+                        href={value?.href}
+                        target={value?.blank ? "_blank" : undefined}
+                        rel={value?.blank ? "noopener noreferrer" : undefined}
+                        className="text-orange-600 underline hover:text-orange-700"
+                      >
+                        {children}
+                      </a>
+                    ),
+                    code: ({ children }) => (
+                      <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">
+                        {children}
+                      </code>
+                    ),
+                  },
+                }}
+              />
+            </article>
+          </div>
+        </section>
       )}
 
       {countries.length > 0 && <NationalitySection countries={countries} />}
 
       {faqs.length > 0 && (
-        <section style={{ padding: "60px 20px" }}>
-          <div style={{ maxWidth: "900px", margin: "0 auto" }}>
-            <h2 style={{ fontSize: "32px", fontWeight: "bold", marginBottom: "40px", textAlign: "center", color: "#1a1a2e" }}>
+        <section className="py-12 md:py-16 px-5">
+          <div className="max-w-2xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">
               {locale === "es" ? "Preguntas Frecuentes" : locale === "ar" ? "الأسئلة الشائعة" : "Frequently Asked Questions"}
             </h2>
             <FAQSection faqs={faqs} />
@@ -204,16 +206,16 @@ export default async function VisaIndexPage({ params }: { params: Promise<{ loca
         </section>
       )}
 
-      <section style={{ padding: "60px 20px" }}>
-        <div style={{ maxWidth: "900px", margin: "0 auto" }}>
-          <h2 style={{ fontSize: "32px", fontWeight: "bold", marginBottom: "20px", textAlign: "center", color: "#1a1a2e" }}>
+      <section className="py-12 md:py-16 px-5">
+        <div className="max-w-2xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-4">
             {locale === "es"
               ? "Países Elegibles para e-Visa"
               : locale === "ar"
               ? "الدول المؤهلة"
               : "Eligible Countries"}
           </h2>
-          <p style={{ fontSize: "15px", color: "#666", textAlign: "center", marginBottom: "30px", lineHeight: "1.6" }}>
+          <p className="text-center text-gray-600 mb-10 leading-relaxed">
             {locale === "es"
               ? "Más de 100 países son elegibles. Egipto, Arabia Saudita, Paquistán, Malasia, China, Irán y muchos más."
               : locale === "ar"
@@ -221,12 +223,12 @@ export default async function VisaIndexPage({ params }: { params: Promise<{ loca
               : "Over 100 countries eligible. Egypt, Saudi Arabia, Pakistan, Malaysia, China, Iran and more."}
           </p>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gap: "20px" }}>
-            <div style={{ padding: "20px", borderRadius: "8px", border: "1px solid #e5e7eb" }}>
-              <h3 style={{ fontSize: "16px", fontWeight: "bold", color: "#1a1a2e", marginBottom: "8px" }}>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="p-6 border border-gray-200 rounded-lg">
+              <h3 className="font-bold text-gray-900 mb-2">
                 {locale === "es" ? "Países Populares" : locale === "ar" ? "الدول الشهيرة" : "Popular Countries"}
               </h3>
-              <p style={{ fontSize: "13px", color: "#666", lineHeight: "1.6" }}>
+              <p className="text-sm text-gray-600 leading-relaxed">
                 {locale === "es"
                   ? "Egipto, Arabia Saudita, Paquistán, Malasia, China, Irán, UAE, Francia, Alemania, Reino Unido"
                   : locale === "ar"
@@ -235,11 +237,11 @@ export default async function VisaIndexPage({ params }: { params: Promise<{ loca
               </p>
             </div>
 
-            <div style={{ padding: "20px", borderRadius: "8px", border: "1px solid #e5e7eb" }}>
-              <h3 style={{ fontSize: "16px", fontWeight: "bold", color: "#1a1a2e", marginBottom: "8px" }}>
+            <div className="p-6 border border-gray-200 rounded-lg">
+              <h3 className="font-bold text-gray-900 mb-2">
                 {locale === "es" ? "Cómo Verificar" : locale === "ar" ? "كيفية التحقق" : "How to Check"}
               </h3>
-              <p style={{ fontSize: "13px", color: "#666", lineHeight: "1.6" }}>
+              <p className="text-sm text-gray-600 leading-relaxed">
                 {locale === "es"
                   ? "Selecciona tu país arriba. Revisa los requisitos. Solicita tu e-visa."
                   : locale === "ar"
@@ -248,11 +250,11 @@ export default async function VisaIndexPage({ params }: { params: Promise<{ loca
               </p>
             </div>
 
-            <div style={{ padding: "20px", borderRadius: "8px", border: "1px solid #e5e7eb" }}>
-              <h3 style={{ fontSize: "16px", fontWeight: "bold", color: "#1a1a2e", marginBottom: "8px" }}>
+            <div className="p-6 border border-gray-200 rounded-lg">
+              <h3 className="font-bold text-gray-900 mb-2">
                 {locale === "es" ? "Proceso Rápido" : locale === "ar" ? "عملية سريعة" : "Fast Process"}
               </h3>
-              <p style={{ fontSize: "13px", color: "#666", lineHeight: "1.6" }}>
+              <p className="text-sm text-gray-600 leading-relaxed">
                 {locale === "es"
                   ? "5 minutos para aplicar. 3 horas aprobación. Sin visita a embajada."
                   : locale === "ar"

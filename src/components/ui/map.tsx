@@ -67,7 +67,7 @@ export function WorldMap({
   const fullCycleDuration = totalAnimationTime + pauseTime;
 
   return (
-    <div className="w-full aspect-[2/1] dark:bg-black bg-white rounded-lg relative font-sans overflow-hidden" style={{ zIndex: 1 }}>
+    <div className="w-full aspect-[2/1] dark:bg-black bg-white rounded-lg relative font-sans overflow-hidden">
       <Image
         src={`data:image/svg+xml;utf8,${encodeURIComponent(svgMap)}`}
         className="h-full w-full [mask-image:linear-gradient(to_bottom,transparent,white_10%,white_90%,transparent)] pointer-events-none select-none object-cover"
@@ -82,7 +82,7 @@ export function WorldMap({
         viewBox="0 0 800 400"
         className="w-full h-full absolute inset-0 select-none"
         preserveAspectRatio="xMidYMid meet"
-        style={{ pointerEvents: "auto", zIndex: 1 }}
+        style={{ pointerEvents: "auto" }}
       >
         <defs>
           <linearGradient id="path-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
