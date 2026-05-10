@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { ArrowRight, FileText, Search, Zap, Clock } from "lucide-react";
 import styles from "./Hero.module.css";
 
@@ -45,19 +46,17 @@ export function Hero({ title, primaryButton, secondaryButton, processingOptions 
           ref={i === cur ? leavingRef : null}
           className={`${styles.slide} ${i === cur ? styles.active : styles.inactive}`}
         >
-          <picture className={styles.backgroundPicture}>
-            <source
-              srcSet="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E"
-              type="image/webp"
-            />
-            <img
+          <div className={styles.backgroundPicture}>
+            <Image
               src={src}
-              alt={`Slide ${i + 1}`}
+              alt={`Azerbaijan scenic backdrop slide ${i + 1}`}
+              fill
+              priority={i === 0}
+              sizes="100vw"
               className={styles.backgroundImage}
-              loading={i === 0 ? "eager" : "lazy"}
-              decoding="async"
+              quality={75}
             />
-          </picture>
+          </div>
         </div>
       ))}
 
