@@ -31,10 +31,10 @@ export function Navbar({ logoUrl }: NavbarProps = {}) {
   };
 
   const links = [
-    { label: t("nav.visa"), href: "#", active: true },
-    { label: t("nav.blog"), href: "/blog" },
-    { label: t("nav.about"), href: "#" },
-    { label: t("nav.contact"), href: "#" },
+    { label: t("nav.visa"), href: "/visa", active: pathname === "/visa" },
+    { label: t("nav.blog"), href: "/blog", active: pathname === "/blog" },
+    { label: t("nav.about"), href: "/about", active: pathname === "/about" },
+    { label: t("nav.contact"), href: "/contact", active: pathname === "/contact" },
   ];
 
   return (
