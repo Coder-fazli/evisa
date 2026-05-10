@@ -26,7 +26,7 @@ export function WorldMapSection() {
 
   return (
     <>
-      <section className="bg-white sticky top-24 md:static z-20 pt-6 pb-2 md:pb-12 border-b md:border-0">
+      <section className="bg-white static md:sticky md:top-24 md:z-20 pt-6 pb-6 md:pb-12 border-b md:border-0">
         {/* Header */}
         <div className="max-w-2xl mx-auto text-center px-5 mb-4 md:mb-2">
           <p className="text-[10px] font-medium tracking-[2.5px] text-[#E8671A] uppercase mb-2">
