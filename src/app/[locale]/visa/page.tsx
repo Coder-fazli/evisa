@@ -194,85 +194,72 @@ export default async function VisaIndexPage({ params }: { params: Promise<{ loca
       {countries.length > 0 && <NationalitySection countries={countries} />}
 
       {faqs.length > 0 && (
-        <section style={{ padding: "80px 20px", backgroundColor: "#ffffff" }}>
-          <div style={{ maxWidth: "800px", margin: "0 auto" }}>
-            <h2 style={{ fontSize: "36px", fontWeight: "bold", marginBottom: "50px", textAlign: "center", color: "#1a1a2e" }}>
-              {locale === "es" ? "Preguntas Frecuentes sobre Visa" : locale === "ar" ? "الأسئلة الشائعة عن التأشيرة" : "Visa FAQs"}
+        <section style={{ padding: "60px 20px" }}>
+          <div style={{ maxWidth: "900px", margin: "0 auto" }}>
+            <h2 style={{ fontSize: "32px", fontWeight: "bold", marginBottom: "40px", textAlign: "center", color: "#1a1a2e" }}>
+              {locale === "es" ? "Preguntas Frecuentes" : locale === "ar" ? "الأسئلة الشائعة" : "Frequently Asked Questions"}
             </h2>
             <FAQSection faqs={faqs} />
           </div>
         </section>
       )}
 
-      <section style={{ padding: "80px 20px", backgroundColor: "#f9fafb" }}>
+      <section style={{ padding: "60px 20px" }}>
         <div style={{ maxWidth: "900px", margin: "0 auto" }}>
-          <h2 style={{ fontSize: "36px", fontWeight: "bold", marginBottom: "15px", textAlign: "center", color: "#1a1a2e" }}>
+          <h2 style={{ fontSize: "32px", fontWeight: "bold", marginBottom: "20px", textAlign: "center", color: "#1a1a2e" }}>
             {locale === "es"
-              ? "Países Elegibles para la e-Visa de Azerbaiyán"
+              ? "Países Elegibles para e-Visa"
               : locale === "ar"
-              ? "الدول المؤهلة للتأشيرة الإلكترونية"
-              : "Azerbaijan e-Visa Eligible Countries"}
+              ? "الدول المؤهلة"
+              : "Eligible Countries"}
           </h2>
-          <p style={{ fontSize: "16px", color: "#666", textAlign: "center", marginBottom: "40px", lineHeight: "1.6" }}>
+          <p style={{ fontSize: "15px", color: "#666", textAlign: "center", marginBottom: "30px", lineHeight: "1.6" }}>
             {locale === "es"
-              ? "Más de 100 países son elegibles para solicitar la e-visa de Azerbaiyán a través del sistema ASAN. Verifica si tu país está en la lista de países elegibles."
+              ? "Más de 100 países son elegibles. Egipto, Arabia Saudita, Paquistán, Malasia, China, Irán y muchos más."
               : locale === "ar"
-              ? "أكثر من 100 دول مؤهلة للتقدم بطلب للحصول على التأشيرة الإلكترونية لأذربيجان من خلال نظام ASAN. تحقق مما إذا كانت دولتك مؤهلة."
-              : "Over 100 countries are eligible to apply for Azerbaijan e-visa through the ASAN system. Citizens from Egypt, Saudi Arabia, Pakistan, Malaysia, China, Iran, UAE and many more countries can get an e-visa. Use the country selector above to check your specific nationality eligibility requirements."}
+              ? "أكثر من 100 دول مؤهلة. مصر والمملكة العربية السعودية وباكستان وماليزيا والصين وإيران والمزيد."
+              : "Over 100 countries eligible. Egypt, Saudi Arabia, Pakistan, Malaysia, China, Iran and more."}
           </p>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gap: "20px", marginBottom: "40px" }}>
-            <div style={{ backgroundColor: "white", padding: "24px", borderRadius: "12px", border: "1px solid #e5e7eb" }}>
-              <h3 style={{ fontSize: "18px", fontWeight: "bold", color: "#1a1a2e", marginBottom: "10px" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gap: "20px" }}>
+            <div style={{ padding: "20px", borderRadius: "8px", border: "1px solid #e5e7eb" }}>
+              <h3 style={{ fontSize: "16px", fontWeight: "bold", color: "#1a1a2e", marginBottom: "8px" }}>
                 {locale === "es" ? "Países Populares" : locale === "ar" ? "الدول الشهيرة" : "Popular Countries"}
               </h3>
-              <p style={{ fontSize: "14px", color: "#666", lineHeight: "1.8" }}>
+              <p style={{ fontSize: "13px", color: "#666", lineHeight: "1.6" }}>
                 {locale === "es"
-                  ? "Egipto, Arabia Saudita, Paquistán, Malasia, China, Irán, Emiratos Árabes Unidos, Francia, Alemania, Reino Unido"
+                  ? "Egipto, Arabia Saudita, Paquistán, Malasia, China, Irán, UAE, Francia, Alemania, Reino Unido"
                   : locale === "ar"
-                  ? "مصر والمملكة العربية السعودية وباكستان وماليزيا والصين وإيران والإمارات العربية المتحدة"
-                  : "Egypt, Saudi Arabia, Pakistan, Malaysia, China, Iran, UAE, France, Germany, United Kingdom"}
+                  ? "مصر والمملكة العربية السعودية وباكستان وماليزيا والصين وإيران والإمارات"
+                  : "Egypt, Saudi Arabia, Pakistan, Malaysia, China, Iran, UAE, France, Germany, UK"}
               </p>
             </div>
 
-            <div style={{ backgroundColor: "white", padding: "24px", borderRadius: "12px", border: "1px solid #e5e7eb" }}>
-              <h3 style={{ fontSize: "18px", fontWeight: "bold", color: "#1a1a2e", marginBottom: "10px" }}>
-                {locale === "es" ? "Cómo Verificar Elegibilidad" : locale === "ar" ? "كيفية التحقق من الأهلية" : "How to Check Eligibility"}
+            <div style={{ padding: "20px", borderRadius: "8px", border: "1px solid #e5e7eb" }}>
+              <h3 style={{ fontSize: "16px", fontWeight: "bold", color: "#1a1a2e", marginBottom: "8px" }}>
+                {locale === "es" ? "Cómo Verificar" : locale === "ar" ? "كيفية التحقق" : "How to Check"}
               </h3>
-              <p style={{ fontSize: "14px", color: "#666", lineHeight: "1.8" }}>
+              <p style={{ fontSize: "13px", color: "#666", lineHeight: "1.6" }}>
                 {locale === "es"
-                  ? "1. Selecciona tu país arriba\n2. Revisa los requisitos\n3. Solicita tu e-visa"
+                  ? "Selecciona tu país arriba. Revisa los requisitos. Solicita tu e-visa."
                   : locale === "ar"
-                  ? "1. حدد دولتك أعلاه\n2. راجع المتطلبات\n3. تقدم بطلب للحصول على e-visa"
-                  : "1. Select your country above\n2. Review requirements\n3. Apply for your e-visa"}
+                  ? "حدد دولتك. راجع المتطلبات. تقدم بطلب."
+                  : "Select your country. Review requirements. Apply for e-visa."}
               </p>
             </div>
 
-            <div style={{ backgroundColor: "white", padding: "24px", borderRadius: "12px", border: "1px solid #e5e7eb" }}>
-              <h3 style={{ fontSize: "18px", fontWeight: "bold", color: "#1a1a2e", marginBottom: "10px" }}>
+            <div style={{ padding: "20px", borderRadius: "8px", border: "1px solid #e5e7eb" }}>
+              <h3 style={{ fontSize: "16px", fontWeight: "bold", color: "#1a1a2e", marginBottom: "8px" }}>
                 {locale === "es" ? "Proceso Rápido" : locale === "ar" ? "عملية سريعة" : "Fast Process"}
               </h3>
-              <p style={{ fontSize: "14px", color: "#666", lineHeight: "1.8" }}>
+              <p style={{ fontSize: "13px", color: "#666", lineHeight: "1.6" }}>
                 {locale === "es"
-                  ? "Solicitud en línea en 5 minutos. Aprobación en 3 horas. Sin necesidad de visitar la embajada."
+                  ? "5 minutos para aplicar. 3 horas aprobación. Sin visita a embajada."
                   : locale === "ar"
-                  ? "تطبيق عبر الإنترنت في 5 دقائق. الموافقة في 3 ساعات. لا حاجة لزيارة السفارة."
-                  : "Online application in 5 minutes. Approval in 3 hours. No embassy visit needed."}
+                  ? "5 دقائق للتقديم. 3 ساعات موافقة. بدون زيارة سفارة."
+                  : "5 min to apply. 3 hrs approval. No embassy visit."}
               </p>
             </div>
-          </div>
-
-          <div style={{ backgroundColor: "white", padding: "30px", borderRadius: "12px", border: "2px solid #E8671A" }}>
-            <h3 style={{ fontSize: "20px", fontWeight: "bold", color: "#E8671A", marginBottom: "15px" }}>
-              {locale === "es" ? "¿No ves tu país?" : locale === "ar" ? "لا ترى دولتك؟" : "Don't see your country?"}
-            </h3>
-            <p style={{ fontSize: "15px", color: "#666", marginBottom: "15px", lineHeight: "1.6" }}>
-              {locale === "es"
-                ? "Si tu país no aparece en la lista anterior, selecciona tu nacionalidad en el selector de países arriba. Si aún tienes dudas sobre tu elegibilidad, contacta al equipo de soporte ASAN."
-                : locale === "ar"
-                ? "إذا لم تكن دولتك مدرجة أعلاه، فحدد جنسيتك في محدد البلد أعلاه. إذا كان لديك أي شكوك حول أهليتك، اتصل بفريق دعم ASAN."
-                : "If your country is not listed above, select your nationality in the country selector above. If you have doubts about your eligibility, contact ASAN support team for verification."}
-            </p>
           </div>
         </div>
       </section>
