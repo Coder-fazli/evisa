@@ -150,25 +150,13 @@ export default async function VisaIndexPage({ params }: { params: Promise<{ loca
         </div>
       </div>
 
-      {countries.length > 0 && (
-        <section style={{ padding: "60px 20px", backgroundColor: "#f9fafb" }}>
-          <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
-            <h2 style={{ fontSize: "32px", fontWeight: "bold", marginBottom: "10px", textAlign: "center", color: "#1a1a2e" }}>
-              {locale === "es" ? "Visados por Nacionalidad" : locale === "ar" ? "التأشيرات حسب الجنسية" : "Visas by Nationality"}
-            </h2>
-            <p style={{ textAlign: "center", color: "#666", marginBottom: "40px", fontSize: "14px" }}>
-              {locale === "es" ? "Encuentra los requisitos de visa específicos para tu país" : locale === "ar" ? "ابحث عن متطلبات التأشيرة المحددة لبلدك" : "Find visa requirements specific to your country"}
-            </p>
-            <NationalitySection countries={countries} />
-          </div>
-        </section>
-      )}
+      {countries.length > 0 && <NationalitySection countries={countries} />}
 
       {faqs.length > 0 && (
-        <section style={{ padding: "60px 20px" }}>
-          <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
-            <h2 style={{ fontSize: "32px", fontWeight: "bold", marginBottom: "40px", textAlign: "center", color: "#1a1a2e" }}>
-              {locale === "es" ? "Preguntas Frecuentes" : locale === "ar" ? "الأسئلة الشائعة" : "Frequently Asked Questions"}
+        <section style={{ padding: "80px 20px", backgroundColor: "#ffffff" }}>
+          <div style={{ maxWidth: "800px", margin: "0 auto" }}>
+            <h2 style={{ fontSize: "36px", fontWeight: "bold", marginBottom: "50px", textAlign: "center", color: "#1a1a2e" }}>
+              {locale === "es" ? "Preguntas Frecuentes sobre Visa" : locale === "ar" ? "الأسئلة الشائعة عن التأشيرة" : "Visa FAQs"}
             </h2>
             <FAQSection faqs={faqs} />
           </div>
