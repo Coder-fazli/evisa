@@ -5,6 +5,7 @@ import { PostSidebar } from "@/components/blog/PostSidebar";
 import { client } from "@/sanity/client";
 import { PortableText } from "@portabletext/react";
 import styles from "./PostPage.module.css";
+import { BlogCountryGrid } from "@/components/BlogCountryGrid";
 
 async function getPost(slug: string, locale: string) {
   const langFields: Record<string, { title: string; excerpt: string; category: string; body: string; metaTitle: string; metaDescription: string }> = {
@@ -61,7 +62,7 @@ async function getCountries(locale: string) {
 
   try {
     return await client.fetch(
-      `*[_type == "country"] | order(${nameField} asc) [0...12] { "name": ${nameField}, "slug": slug.current, countryCode }`,
+      `*[_type == "country"] | order(${nameField} asc) { "name": ${nameField}, "slug": slug.current, countryCode }`,
       {},
       { next: { revalidate: 0 } }
     );
@@ -195,40 +196,47 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
 
             {post.excerpt && <p className={styles.excerpt}>{post.excerpt}</p>}
 
-            {post.body && (
-              <article className={styles.body}>
-                <PortableText
-                  value={post.body}
-                  components={{
-                    marks: {
-                      link: ({ children, value }) => (
-                        <a
-                          href={value?.href}
-                          target={value?.blank ? "_blank" : undefined}
-                          rel={value?.blank ? "noopener noreferrer" : undefined}
-                          style={{ color: "#E8671A", textDecoration: "underline" }}
-                        >
-                          {children}
-                        </a>
-                      ),
-                      code: ({ children }) => (
-                        <code style={{ background: "#f3f4f6", padding: "2px 6px", borderRadius: "4px", fontSize: "14px", fontFamily: "monospace" }}>
-                          {children}
-                        </code>
-                      ),
-                    },
-                    block: {
-                      blockquote: ({ children }) => (
-                        <blockquote className={styles.blockquote}>{children}</blockquote>
-                      ),
-                      h4: ({ children }) => (
-                        <h4 className={styles.h4}>{children}</h4>
-                      ),
-                    },
-                  }}
-                />
-              </article>
-            )}
+            {post.body && (() => {
+              const portableTextComponents = {
+                marks: {
+                  link: ({ children, value }: any) => (
+                    <a
+                      href={value?.href}
+                      target={value?.blank ? "_blank" : undefined}
+                      rel={value?.blank ? "noopener noreferrer" : undefined}
+                      style={{ color: "#E8671A", textDecoration: "underline" }}
+                    >
+                      {children}
+                    </a>
+                  ),
+                  code: ({ children }: any) => (
+                    <code style={{ background: "#f3f4f6", padding: "2px 6px", borderRadius: "4px", fontSize: "14px", fontFamily: "monospace" }}>
+                      {children}
+                    </code>
+                  ),
+                },
+                block: {
+                  blockquote: ({ children }: any) => (
+                    <blockquote className={styles.blockquote}>{children}</blockquote>
+                  ),
+                  h4: ({ children }: any) => (
+                    <h4 className={styles.h4}>{children}</h4>
+                  ),
+                },
+              };
+
+              return (
+                <article className={styles.body}>
+                  <PortableText value={post.body.slice(0, 1)} components={portableTextComponents} />
+
+                  {countries.length > 0 && (
+                    <BlogCountryGrid countries={countries} locale={locale} limit={12} />
+                  )}
+
+                  <PortableText value={post.body.slice(1)} components={portableTextComponents} />
+                </article>
+              );
+            })()}
           </main>
 
           <PostSidebar relatedPosts={relatedPosts} countries={countries} />

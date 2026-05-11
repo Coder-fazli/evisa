@@ -52,6 +52,12 @@ export const countryType = defineType({
   name: "country",
   title: "Country Visa Page",
   type: "document",
+  groups: [
+    { name: "general", title: "⚙️ General", default: true },
+    { name: "english", title: "🇬🇧 English" },
+    { name: "spanish", title: "🇪🇸 Spanish" },
+    { name: "arabic", title: "🇸🇦 Arabic" },
+  ],
   fields: [
     defineField({
       name: "slug",
@@ -59,28 +65,33 @@ export const countryType = defineType({
       type: "slug",
       options: { source: "name_en", maxLength: 96 },
       validation: (r) => r.required(),
+      group: "general",
     }),
     defineField({
       name: "countryCode",
       title: "Country Code (2-letter, e.g. de)",
       type: "string",
       validation: (r) => r.required().max(2),
+      group: "general",
     }),
     defineField({
       name: "heroImage",
       title: "Featured Image",
       type: "image",
       options: { hotspot: true },
+      group: "general",
     }),
     defineField({
       name: "applyLink",
       title: "Apply Now URL",
       type: "url",
+      group: "general",
     }),
     defineField({
       name: "publishedDate",
       title: "Published Date",
       type: "string",
+      group: "general",
     }),
 
     // ENGLISH FIELDS
@@ -88,6 +99,7 @@ export const countryType = defineType({
       name: "english",
       title: "🇬🇧 English Content",
       type: "object",
+      group: "english",
       fields: [
         defineField({
           name: "name_en",
@@ -150,6 +162,7 @@ export const countryType = defineType({
       name: "spanish",
       title: "🇪🇸 Spanish Content",
       type: "object",
+      group: "spanish",
       fields: [
         defineField({
           name: "name_es",
@@ -211,6 +224,7 @@ export const countryType = defineType({
       name: "arabic",
       title: "🇸🇦 Arabic Content",
       type: "object",
+      group: "arabic",
       fields: [
         defineField({
           name: "name_ar",

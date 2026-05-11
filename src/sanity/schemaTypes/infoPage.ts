@@ -39,6 +39,12 @@ export default defineType({
   name: "infoPage",
   title: "Info Pages",
   type: "document",
+  groups: [
+    { name: "general", title: "⚙️ General", default: true },
+    { name: "english", title: "🇬🇧 English" },
+    { name: "spanish", title: "🇪🇸 Spanish" },
+    { name: "arabic", title: "🇸🇦 Arabic" },
+  ],
   fields: [
     defineField({
       name: "slug",
@@ -46,11 +52,13 @@ export default defineType({
       type: "slug",
       options: { source: "english.title_en" },
       validation: (Rule) => Rule.required(),
+      group: "general",
     }),
     defineField({
       name: "english",
       title: "🇬🇧 English (EN)",
       type: "object",
+      group: "english",
       fields: [
         defineField({
           name: "title_en",
@@ -79,6 +87,7 @@ export default defineType({
       name: "spanish",
       title: "🇪🇸 Spanish (ES)",
       type: "object",
+      group: "spanish",
       fields: [
         defineField({
           name: "title_es",
@@ -107,6 +116,7 @@ export default defineType({
       name: "arabic",
       title: "🇸🇦 Arabic (AR)",
       type: "object",
+      group: "arabic",
       fields: [
         defineField({
           name: "title_ar",

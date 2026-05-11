@@ -69,7 +69,7 @@ export function PostSidebar({ relatedPosts = [], countries = [] }: PostSidebarPr
         <div className={styles.card}>
           <div className={styles.cardHeader}>Visa by Country</div>
           <ul className={styles.natList}>
-            {countries.map((c, idx) => (
+            {countries.slice(0, 12).map((c, idx) => (
               <li key={`${c.slug}-${idx}`}>
                 <a href={`/visa/${c.slug}`} className={styles.natItem}>
                   <Image

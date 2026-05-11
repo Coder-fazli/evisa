@@ -39,6 +39,12 @@ export const postType = defineType({
   name: "post",
   title: "Blog Posts",
   type: "document",
+  groups: [
+    { name: "general", title: "⚙️ General", default: true },
+    { name: "english", title: "🇬🇧 English" },
+    { name: "spanish", title: "🇪🇸 Spanish" },
+    { name: "arabic", title: "🇸🇦 Arabic" },
+  ],
   fields: [
     defineField({
       name: "slug",
@@ -46,18 +52,21 @@ export const postType = defineType({
       type: "slug",
       options: { source: "english.title_en", maxLength: 96 },
       validation: (r) => r.required(),
+      group: "general",
     }),
     defineField({
       name: "publishedAt",
       title: "Published Date",
       type: "datetime",
       validation: (r) => r.required(),
+      group: "general",
     }),
     defineField({
       name: "coverImage",
       title: "Cover Image",
       type: "image",
       options: { hotspot: true },
+      group: "general",
     }),
 
     // ENGLISH FIELDS
@@ -65,6 +74,7 @@ export const postType = defineType({
       name: "english",
       title: "🇬🇧 English Content",
       type: "object",
+      group: "english",
       fields: [
         defineField({
           name: "title_en",
@@ -108,6 +118,7 @@ export const postType = defineType({
       name: "spanish",
       title: "🇪🇸 Spanish Content",
       type: "object",
+      group: "spanish",
       fields: [
         defineField({
           name: "title_es",
@@ -150,6 +161,7 @@ export const postType = defineType({
       name: "arabic",
       title: "🇸🇦 Arabic Content",
       type: "object",
+      group: "arabic",
       fields: [
         defineField({
           name: "title_ar",

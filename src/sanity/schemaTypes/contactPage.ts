@@ -4,18 +4,26 @@ export default defineType({
   name: "contactPage",
   title: "Contact Page",
   type: "document",
+  groups: [
+    { name: "general", title: "⚙️ General", default: true },
+    { name: "english", title: "🇬🇧 English" },
+    { name: "spanish", title: "🇪🇸 Spanish" },
+    { name: "arabic", title: "🇸🇦 Arabic" },
+  ],
   fields: [
     defineField({
       name: "heroImage",
       title: "Hero Background Image",
       type: "image",
       options: { hotspot: true },
+      group: "general",
     }),
 
     defineField({
       name: "english",
       title: "🇬🇧 English (EN)",
       type: "object",
+      group: "english",
       fields: [
         defineField({
           name: "heroTitle_en",
@@ -102,6 +110,7 @@ export default defineType({
       name: "spanish",
       title: "🇪🇸 Spanish (ES)",
       type: "object",
+      group: "spanish",
       fields: [
         defineField({
           name: "heroTitle_es",
@@ -188,6 +197,7 @@ export default defineType({
       name: "arabic",
       title: "🇸🇦 Arabic (AR)",
       type: "object",
+      group: "arabic",
       fields: [
         defineField({
           name: "heroTitle_ar",
