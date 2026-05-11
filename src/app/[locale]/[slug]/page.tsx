@@ -5,7 +5,7 @@ import { PostSidebar } from "@/components/blog/PostSidebar";
 import { client } from "@/sanity/client";
 import { PortableText } from "@portabletext/react";
 import styles from "./PostPage.module.css";
-import { NationalitySection } from "@/components/NationalitySection";
+import { BlogCountryGrid } from "@/components/BlogCountryGrid";
 
 async function getPost(slug: string, locale: string) {
   const langFields: Record<string, { title: string; excerpt: string; category: string; body: string; metaTitle: string; metaDescription: string }> = {
@@ -230,9 +230,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
                   <PortableText value={post.body.slice(0, 1)} components={portableTextComponents} />
 
                   {countries.length > 0 && (
-                    <div className="-mx-4 md:-mx-6 my-10">
-                      <NationalitySection countries={countries} />
-                    </div>
+                    <BlogCountryGrid countries={countries} locale={locale} limit={12} />
                   )}
 
                   <PortableText value={post.body.slice(1)} components={portableTextComponents} />

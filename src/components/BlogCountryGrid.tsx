@@ -22,10 +22,10 @@ export function BlogCountryGrid({ countries, locale, limit = 12 }: BlogCountryGr
 
   const heading =
     locale === "es"
-      ? "Verifica los requisitos de tu nacionalidad"
+      ? "Verifica los Requisitos por Nacionalidad"
       : locale === "ar"
-      ? "تحقق من متطلبات تأشيرة جنسيتك"
-      : "Check Visa Requirements by Your Nationality";
+      ? "تحقق من المتطلبات حسب الجنسية"
+      : "Check Requirements by Your Nationality";
 
   const viewAllLabel =
     locale === "es"
@@ -35,62 +35,58 @@ export function BlogCountryGrid({ countries, locale, limit = 12 }: BlogCountryGr
       : "View all eligible countries →";
 
   return (
-    <div style={{ margin: "36px 0", padding: "28px 24px", background: "#fafafa", borderRadius: "16px", border: "1px solid #f0f0f0" }}>
-      <h3 style={{ fontSize: "18px", fontWeight: 700, color: "#1a1a2e", marginBottom: "18px", lineHeight: 1.3 }}>
-        {heading}
-      </h3>
+    <section className="bg-[#f4f6fa] rounded-3xl py-10 px-5 md:px-8 my-10">
+      <div className="text-center mb-7">
+        <h3 className="text-xl md:text-2xl font-extrabold text-[#1a1a2e] leading-tight">
+          {heading}
+        </h3>
+      </div>
 
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(180px, 1fr))", gap: "10px" }}>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
         {visible.map((c) => (
           <a
             key={c.slug}
             href={`/${locale}/visa/${c.slug}`}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "10px",
-              background: "white",
-              padding: "10px 12px",
-              borderRadius: "10px",
-              border: "1px solid #eaeaea",
-              textDecoration: "none",
-              transition: "all 0.2s ease",
-            }}
-            className="hover:!border-[#E8671A] hover:!shadow-md"
+            className="group flex items-center gap-3 bg-white rounded-xl px-4 py-3
+              border border-gray-100
+              shadow-[0_2px_8px_rgba(0,0,0,0.04)]
+              hover:border-[#E8671A]/40 hover:shadow-[0_6px_18px_rgba(232,103,26,0.13)]
+              hover:-translate-y-0.5 transition-all duration-200"
           >
-            <img
-              src={c.countryCode
-                ? `https://flagcdn.com/w40/${c.countryCode.toLowerCase()}.png`
-                : `https://flagcdn.com/w40/az.png`}
-              alt={c.name || toLabel(c.slug)}
-              width={28}
-              height={20}
-              style={{ borderRadius: "3px", objectFit: "cover", flexShrink: 0 }}
-            />
-            <span style={{ fontSize: "13px", fontWeight: 600, color: "#1a1a2e", flex: 1, lineHeight: 1.3 }}>
+            <div className="w-10 h-7 rounded overflow-hidden flex-shrink-0 shadow-sm">
+              <img
+                src={
+                  c.countryCode
+                    ? `https://flagcdn.com/w80/${c.countryCode.toLowerCase()}.png`
+                    : `https://flagcdn.com/w80/az.png`
+                }
+                alt={c.name || toLabel(c.slug)}
+                className="w-full h-full object-cover"
+              />
+            </div>
+
+            <span className="flex-1 min-w-0 text-sm font-semibold text-[#1a1a2e] group-hover:text-[#E8671A] transition-colors truncate">
               {c.name || toLabel(c.slug)}
             </span>
-            <ArrowRight size={13} style={{ color: "#9ca3af", flexShrink: 0 }} />
+
+            <ArrowRight
+              size={14}
+              className="text-gray-300 group-hover:text-[#E8671A] group-hover:translate-x-0.5 transition-all flex-shrink-0"
+            />
           </a>
         ))}
       </div>
 
       {hasMore && (
-        <div style={{ marginTop: "18px", textAlign: "center" }}>
+        <div className="text-center mt-7">
           <a
             href={`/${locale}/visa`}
-            style={{
-              fontSize: "14px",
-              fontWeight: 600,
-              color: "#E8671A",
-              textDecoration: "none",
-            }}
-            className="hover:!underline"
+            className="inline-block text-sm font-bold text-[#E8671A] hover:underline"
           >
             {viewAllLabel}
           </a>
         </div>
       )}
-    </div>
+    </section>
   );
 }
