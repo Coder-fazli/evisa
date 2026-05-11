@@ -226,15 +226,19 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
               };
 
               return (
-                <article className={styles.body}>
-                  <PortableText value={post.body.slice(0, 1)} components={portableTextComponents} />
+                <>
+                  <article className={styles.body}>
+                    <PortableText value={post.body.slice(0, 1)} components={portableTextComponents} />
+                  </article>
 
                   {countries.length > 0 && (
                     <BlogCountryGrid countries={countries} locale={locale} limit={12} />
                   )}
 
-                  <PortableText value={post.body.slice(1)} components={portableTextComponents} />
-                </article>
+                  <article className={styles.body}>
+                    <PortableText value={post.body.slice(1)} components={portableTextComponents} />
+                  </article>
+                </>
               );
             })()}
           </main>
