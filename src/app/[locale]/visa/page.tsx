@@ -153,9 +153,9 @@ export default async function VisaIndexPage({ params }: { params: Promise<{ loca
       <InfoPageHero title={page.title} heroImage="/baku-country-hero.jpg" />
       <InfoPageStats stats={visaStats} />
 
-      {page.body && JSON.stringify(page.body).toLowerCase().indexOf("add your content") === -1 && (
-        <section className="py-10 md:py-16 px-5">
-          <div className="max-w-2xl mx-auto">
+      <section className="relative z-20 bg-white -mt-8 md:-mt-12 rounded-t-3xl md:rounded-t-5xl px-5 md:px-12 lg:px-20 pt-8 md:pt-12 pb-12 md:pb-16">
+        <div className="max-w-3xl mx-auto">
+          {page.body && JSON.stringify(page.body).toLowerCase().indexOf("add your content") === -1 ? (
             <article className="prose prose-sm md:prose-base max-w-none">
               <PortableText
                 value={page.body}
@@ -212,9 +212,33 @@ export default async function VisaIndexPage({ params }: { params: Promise<{ loca
                 }}
               />
             </article>
-          </div>
-        </section>
-      )}
+          ) : (
+            <article className="prose prose-sm md:prose-base max-w-none">
+              <h2>
+                {locale === "es"
+                  ? "Información sobre Visas para Azerbaiyán"
+                  : locale === "ar"
+                  ? "معلومات التأشيرة إلى أذربيجان"
+                  : "Azerbaijan e-Visa Information"}
+              </h2>
+              <p>
+                {locale === "es"
+                  ? "Obtén tu visa electrónica para Azerbaiyán de forma rápida y segura. Más de 100 países son elegibles para solicitar la e-visa. El proceso es simple y se puede completar en línea en minutos."
+                  : locale === "ar"
+                  ? "احصل على تأشيرتك الإلكترونية إلى أذربيجان بسرعة وأمان. أكثر من 100 دول مؤهلة للتقدم بطلب للحصول على التأشيرة الإلكترونية. العملية بسيطة ويمكن إكمالها عبر الإنترنت في دقائق."
+                  : "Get your Azerbaijan e-Visa quickly and securely. Over 100 countries are eligible to apply for the e-visa. The process is simple and can be completed online in minutes."}
+              </p>
+              <p>
+                {locale === "es"
+                  ? "Nuestro servicio ofrece procesos de aprobación rápidos con una tasa de éxito del 99.99%. Con más de 10,450 visas aprobadas este año, somos el servicio de visa más confiable."
+                  : locale === "ar"
+                  ? "تقدم خدمتنا عمليات موافقة سريعة بمعدل نجاح 99.99%. مع أكثر من 10,450 تأشيرة موافق عليها هذا العام، نحن خدمة التأشيرة الأكثر موثوقية."
+                  : "Our service offers fast approval processes with a 99.99% success rate. With over 10,450 visas approved this year, we are the most reliable visa service."}
+              </p>
+            </article>
+          )}
+        </div>
+      </section>
 
       {countries.length > 0 && <NationalitySection countries={countries} />}
 
