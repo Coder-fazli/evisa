@@ -66,8 +66,8 @@ export async function proxy(req: NextRequest) {
   }
 
   // 3. No locale prefix → rewrite to /en/...
-  const target = new URL("/en" + (pathname === "/" ? "" : pathname), req.url);
-  target.search = req.nextUrl.search;
+  const target = req.nextUrl.clone();
+  target.pathname = "/en" + (pathname === "/" ? "" : pathname);
   const response = NextResponse.rewrite(target);
   response.headers.set("x-next-intl-locale", "en");
   return response;
