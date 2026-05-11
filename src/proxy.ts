@@ -18,7 +18,7 @@ async function getRedirects(): Promise<Redirect[]> {
   if (now < cacheExpiry && cachedRedirects.length > 0) return cachedRedirects;
   try {
     const data = await client.fetch<Redirect[]>(
-      `*[_type == "redirect" && enabled == true] { source, destination, type }`
+      `*[_type == "redirect" && enabled != false] { source, destination, type }`
     );
     cachedRedirects = data;
     cacheExpiry = now + 60_000;
@@ -42,8 +42,10 @@ export async function proxy(req: NextRequest) {
   }
 
   // 1. Check Sanity redirects first
+  // Normalize: strip trailing slash for comparison (except root "/")
+  const normalizedPath = pathname.length > 1 ? pathname.replace(/\/$/, "") : pathname;
   const redirects = await getRedirects();
-  const match = redirects.find((r) => r.source === pathname);
+  const match = redirects.find((r) => r.source === normalizedPath || r.source === pathname);
   if (match) {
     const url = match.destination.startsWith("http")
       ? match.destination
