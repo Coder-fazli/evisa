@@ -4,6 +4,7 @@ interface Stat {
   icon?: string;
   value: string;
   label: string;
+  description?: string;
 }
 
 interface InfoPageStatsProps {
@@ -27,6 +28,7 @@ export function InfoPageStats({ stats }: InfoPageStatsProps) {
           <div key={idx} className={styles.card}>
             <p className={styles.label}>{stat.label}</p>
             <p className={styles.value}>{stat.value}</p>
+            {stat.description && <p className={styles.description}>{stat.description}</p>}
           </div>
         ))}
       </div>

@@ -124,13 +124,36 @@ export default async function VisaIndexPage({ params }: { params: Promise<{ loca
 
   if (!page) notFound();
 
+  const visaStats = [
+    {
+      value: "10,450+",
+      label: "Visa Approved",
+      description: locale === "es" ? "Solicitudes aprobadas este año" : locale === "ar" ? "الطلبات الموافق عليها هذا العام" : "Applications approved this year"
+    },
+    {
+      value: "540+",
+      label: "Legal Matters",
+      description: locale === "es" ? "Asuntos legales resueltos" : locale === "ar" ? "المسائل القانونية المحلولة" : "Legal matters handled"
+    },
+    {
+      value: "100%",
+      label: "Client Satisfaction",
+      description: locale === "es" ? "Clientes completamente satisfechos" : locale === "ar" ? "رضا العملاء الكامل" : "Customer satisfaction rate"
+    },
+    {
+      value: "99.99%",
+      label: "Success Rate",
+      description: locale === "es" ? "Tasa de aprobación de visas" : locale === "ar" ? "معدل الموافقة على التأشيرات" : "Visa approval success"
+    },
+  ];
+
   return (
     <>
       <Navbar />
       <InfoPageHero title={page.title} heroImage="/baku-country-hero.jpg" />
-      <InfoPageStats />
+      <InfoPageStats stats={visaStats} />
 
-      {page.body && (
+      {page.body && JSON.stringify(page.body).toLowerCase().indexOf("add your content") === -1 && (
         <section className="py-10 md:py-16 px-5">
           <div className="max-w-2xl mx-auto">
             <article className="prose prose-sm md:prose-base max-w-none">

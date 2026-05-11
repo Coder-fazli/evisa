@@ -46,51 +46,36 @@ export function FAQSection({ faqs }: { faqs?: FAQ[] }) {
         answer: item.answer,
     }));
     return (
-        <section className="py-16 md:py-24" style={{ background: '#f9fafb' }}>
-            <div className="mx-auto max-w-[1200px] px-6">
-                {/* Header */}
-                <div className="mb-12 text-center">
-                    <p className="mb-3 text-xs font-semibold uppercase tracking-widest" style={{ color: '#E8671A' }}>
-                        Got Questions?
-                    </p>
-                    <h2 className="text-3xl font-extrabold sm:text-4xl" style={{ color: '#1a1a2e' }}>
-                        Frequently Asked Questions
-                    </h2>
-                    <p className="mt-4 text-base text-gray-500 max-w-xl mx-auto">
-                        Everything you need to know about the Azerbaijan e-Visa process.
-                    </p>
-                </div>
-
-                {/* Accordion */}
-                <div className="max-w-3xl mx-auto">
-                    <Accordion type="single" collapsible className="w-full space-y-3">
-                        {displayFaqs.map((item) => (
-                            <AccordionItem
-                                key={item.id}
-                                value={item.id}
-                                className="border border-gray-200 rounded-xl bg-white px-6 shadow-sm"
+        <div>
+            {/* Accordion */}
+            <div className="max-w-2xl mx-auto">
+                <Accordion type="single" collapsible className="w-full space-y-3">
+                    {displayFaqs.map((item) => (
+                        <AccordionItem
+                            key={item.id}
+                            value={item.id}
+                            className="border border-gray-200 rounded-xl bg-white px-6 shadow-sm"
+                        >
+                            <AccordionTrigger
+                                className="cursor-pointer text-base font-semibold hover:no-underline py-5"
+                                style={{ color: '#1a1a2e' }}
                             >
-                                <AccordionTrigger
-                                    className="cursor-pointer text-base font-semibold hover:no-underline py-5"
-                                    style={{ color: '#1a1a2e' }}
-                                >
-                                    {item.question}
-                                </AccordionTrigger>
-                                <AccordionContent>
-                                    <p className="text-sm leading-relaxed text-gray-500 pb-4">{item.answer}</p>
-                                </AccordionContent>
-                            </AccordionItem>
-                        ))}
-                    </Accordion>
+                                {item.question}
+                            </AccordionTrigger>
+                            <AccordionContent>
+                                <p className="text-sm leading-relaxed text-gray-500 pb-4">{item.answer}</p>
+                            </AccordionContent>
+                        </AccordionItem>
+                    ))}
+                </Accordion>
 
-                    <p className="mt-8 text-center text-sm text-gray-400">
-                        Still have questions?{' '}
-                        <Link href="/contact" className="font-semibold hover:underline" style={{ color: '#E8671A' }}>
-                            Contact our support team
-                        </Link>
-                    </p>
-                </div>
+                <p className="mt-8 text-center text-sm text-gray-400">
+                    Still have questions?{' '}
+                    <Link href="/contact" className="font-semibold hover:underline" style={{ color: '#E8671A' }}>
+                        Contact our support team
+                    </Link>
+                </p>
             </div>
-        </section>
+        </div>
     )
 }
