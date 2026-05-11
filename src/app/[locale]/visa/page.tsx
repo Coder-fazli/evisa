@@ -6,7 +6,7 @@ import { InfoPageStats } from "@/components/infopage/InfoPageStats";
 import { NationalitySection } from "@/components/NationalitySection";
 import { FAQSection } from "@/components/ui/faqs-component";
 import { client } from "@/sanity/client";
-import { PortableText } from "@portabletext/react";
+import { VisaContent } from "@/components/VisaContent";
 
 async function getPage(locale: string) {
   const langMap: Record<string, { title: string; body: string; metaTitle: string; metaDescription: string }> = {
@@ -157,90 +157,11 @@ export default async function VisaIndexPage({ params }: { params: Promise<{ loca
           <InfoPageStats stats={visaStats} />
         </div>
 
-        <div className="max-w-3xl mx-auto mt-12 md:mt-16">
-          {page.body && JSON.stringify(page.body).toLowerCase().indexOf("add your content") === -1 ? (
-            <article className="prose prose-sm md:prose-base max-w-none">
-              <PortableText
-                value={page.body}
-                components={{
-                  block: {
-                    h2: ({ children }) => (
-                      <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mt-10 mb-3 pl-4 border-l-4 border-orange-600">
-                        {children}
-                      </h2>
-                    ),
-                    h3: ({ children }) => (
-                      <h3 className="text-xl font-bold text-gray-900 mt-7 mb-2">
-                        {children}
-                      </h3>
-                    ),
-                    h4: ({ children }) => (
-                      <h4 className="text-lg font-bold text-gray-900 mt-6 mb-2">
-                        {children}
-                      </h4>
-                    ),
-                    normal: ({ children }) => (
-                      <p className="text-gray-700 leading-relaxed mb-4">
-                        {children}
-                      </p>
-                    ),
-                    blockquote: ({ children }) => (
-                      <blockquote className="border-l-4 border-orange-600 pl-6 py-4 my-7 italic text-gray-700 bg-orange-50 rounded-r">
-                        {children}
-                      </blockquote>
-                    ),
-                  },
-                  marks: {
-                    strong: ({ children }) => (
-                      <strong className="font-semibold text-gray-900">
-                        {children}
-                      </strong>
-                    ),
-                    link: ({ children, value }) => (
-                      <a
-                        href={value?.href}
-                        target={value?.blank ? "_blank" : undefined}
-                        rel={value?.blank ? "noopener noreferrer" : undefined}
-                        className="text-orange-600 underline hover:text-orange-700"
-                      >
-                        {children}
-                      </a>
-                    ),
-                    code: ({ children }) => (
-                      <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">
-                        {children}
-                      </code>
-                    ),
-                  },
-                }}
-              />
-            </article>
-          ) : (
-            <article className="prose prose-sm md:prose-base max-w-none">
-              <h2>
-                {locale === "es"
-                  ? "Información sobre Visas para Azerbaiyán"
-                  : locale === "ar"
-                  ? "معلومات التأشيرة إلى أذربيجان"
-                  : "Azerbaijan e-Visa Information"}
-              </h2>
-              <p>
-                {locale === "es"
-                  ? "Obtén tu visa electrónica para Azerbaiyán de forma rápida y segura. Más de 100 países son elegibles para solicitar la e-visa. El proceso es simple y se puede completar en línea en minutos."
-                  : locale === "ar"
-                  ? "احصل على تأشيرتك الإلكترونية إلى أذربيجان بسرعة وأمان. أكثر من 100 دول مؤهلة للتقدم بطلب للحصول على التأشيرة الإلكترونية. العملية بسيطة ويمكن إكمالها عبر الإنترنت في دقائق."
-                  : "Get your Azerbaijan e-Visa quickly and securely. Over 100 countries are eligible to apply for the e-visa. The process is simple and can be completed online in minutes."}
-              </p>
-              <p>
-                {locale === "es"
-                  ? "Nuestro servicio ofrece procesos de aprobación rápidos con una tasa de éxito del 99.99%. Con más de 10,450 visas aprobadas este año, somos el servicio de visa más confiable."
-                  : locale === "ar"
-                  ? "تقدم خدمتنا عمليات موافقة سريعة بمعدل نجاح 99.99%. مع أكثر من 10,450 تأشيرة موافق عليها هذا العام، نحن خدمة التأشيرة الأكثر موثوقية."
-                  : "Our service offers fast approval processes with a 99.99% success rate. With over 10,450 visas approved this year, we are the most reliable visa service."}
-              </p>
-            </article>
-          )}
-        </div>
+        {page.body && JSON.stringify(page.body).toLowerCase().indexOf("add your content") === -1 && (
+          <div className="max-w-3xl mx-auto mt-12 md:mt-16">
+            <VisaContent body={page.body} locale={locale} />
+          </div>
+        )}
       </section>
 
       {countries.length > 0 && <NationalitySection countries={countries} />}
