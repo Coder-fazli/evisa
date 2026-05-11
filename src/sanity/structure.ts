@@ -98,4 +98,15 @@ export const structure = (S: StructureBuilder) =>
             .filter('_type == "infoPage"')
             .defaultOrdering([{ field: "slug.current", direction: "asc" }])
         ),
+
+      S.listItem()
+        .title("Redirects")
+        .icon(() => "🔄")
+        .child(
+          S.documentList()
+            .title("Redirects")
+            .apiVersion(API_VERSION)
+            .filter('_type == "redirect"')
+            .defaultOrdering([{ field: "source", direction: "asc" }])
+        )
     ]);
