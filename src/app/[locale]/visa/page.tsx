@@ -151,10 +151,13 @@ export default async function VisaIndexPage({ params }: { params: Promise<{ loca
     <>
       <Navbar />
       <InfoPageHero title={page.title} heroImage="/baku-country-hero.jpg" />
-      <InfoPageStats stats={visaStats} />
 
       <section className="relative z-30 bg-white -mt-10 md:-mt-16 rounded-t-[40px] md:rounded-t-[80px] px-5 md:px-12 lg:px-20 pt-4 pb-16">
         <div className="max-w-5xl mx-auto -mt-[40px] md:-mt-[80px]">
+          <InfoPageStats stats={visaStats} />
+        </div>
+
+        <div className="max-w-3xl mx-auto mt-12 md:mt-16">
           {page.body && JSON.stringify(page.body).toLowerCase().indexOf("add your content") === -1 ? (
             <article className="prose prose-sm md:prose-base max-w-none">
               <PortableText
