@@ -66,7 +66,9 @@ export async function proxy(req: NextRequest) {
   }
 
   // 3. No locale prefix → rewrite to /en/...
+  // Force http: so nginx's X-Forwarded-Proto: https doesn't cause SSL self-connection
   const target = req.nextUrl.clone();
+  target.protocol = "http:";
   target.pathname = "/en" + (pathname === "/" ? "" : pathname);
   const response = NextResponse.rewrite(target);
   response.headers.set("x-next-intl-locale", "en");
