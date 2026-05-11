@@ -101,7 +101,7 @@ export default async function CountryPage({ params }: { params: Promise<{ locale
   const name = sanityData?.name
     ?? country.replace(/-/g, " ").replace(/\b\w/g, (c: string) => c.toUpperCase());
 
-  const applyLink = sanityData?.applyLink ?? "https://apply.azerbaijan-evisa.com/";
+  const applyLink = sanityData?.applyLink || "https://apply.azerbaijan-evisa.com/";
   const countryCode = sanityData?.countryCode ?? "az";
   const description = sanityData?.description
     ?? `Comprehensive guide on visa requirements and easy online application process for ${name} citizens.`;
