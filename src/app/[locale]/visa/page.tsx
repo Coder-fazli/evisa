@@ -218,16 +218,7 @@ export default async function VisaIndexPage({ params }: { params: Promise<{ loca
 
       {countries.length > 0 && <NationalitySection countries={countries} />}
 
-      {faqs.length > 0 && (
-        <section className="py-12 md:py-16 px-5">
-          <div className="max-w-2xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">
-              {locale === "es" ? "Preguntas Frecuentes" : locale === "ar" ? "الأسئلة الشائعة" : "Frequently Asked Questions"}
-            </h2>
-            <FAQSection faqs={faqs} />
-          </div>
-        </section>
-      )}
+      {faqs.length > 0 && <FAQSection faqs={faqs} />}
 
       <section className="py-12 md:py-16 px-5">
         <div className="max-w-2xl mx-auto">
