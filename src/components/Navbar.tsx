@@ -44,7 +44,7 @@ export function Navbar({ logoUrl }: NavbarProps = {}) {
         <div className="hidden md:flex items-center h-24 max-w-[1200px] mx-auto px-6">
           {/* Logo — left */}
           <a href={locale === "en" ? "/" : `/${locale}`} className="flex items-center cursor-pointer select-none">
-            <img src={logo} alt="eVisa Azerbaijan" className="h-10 w-auto" />
+            <img src={logo} alt="eVisa Azerbaijan" className="h-12 w-auto" />
           </a>
 
           {/* Nav links — centered */}
@@ -93,7 +93,7 @@ export function Navbar({ logoUrl }: NavbarProps = {}) {
         {/* Mobile */}
         <div className="flex md:hidden items-center justify-between h-24 px-5">
           <a href={locale === "en" ? "/" : `/${locale}`} className="flex items-center cursor-pointer select-none">
-            <img src={logo} alt="eVisa Azerbaijan" className="h-9 w-auto" />
+            <img src={logo} alt="eVisa Azerbaijan" className="h-11 w-auto" />
           </a>
           <div className="flex items-center gap-2">
             {/* Language Switcher Mobile */}
